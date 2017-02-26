@@ -18,6 +18,13 @@ var todoSchema = new mongoose.Schema({
 
 var Todo = mongoose.model("Todo", todoSchema);
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  next();
+});
+
 app.get("/", function(req, res){
   res.redirect("/todos");
 });
@@ -27,11 +34,7 @@ app.get("/todos", function(req, res){
     if(err){
       console.log(err);
     } else {
-      if(req.xhr) {
-        res.json(todos);
-      } else {
-        res.render("index", {todos: todos}); 
-      }
+      res.json(todos);
     }
   })
 });
