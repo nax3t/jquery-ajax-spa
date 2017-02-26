@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To Do SPA</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">To Do App</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+          <h1>New Item</h1>
+          <form action="/todos" method="POST" id="new-todo-form">
+            <div class="form-group">
+              <label for="new-item">Item Text</label>
+              <input type="text" name="todo[text]" class="form-control" placeholder="Walk the dog" id="new-item">
+            </div>
+            <button class="btn btn-primary">Create Item</button>
+          </form>
+
+          <h1>To Do Items</h1>
+          <ul class="list-group" id="todo-list">
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery CDN -->
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <!-- Bootstrap CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
+    <!-- AJAX JS -->
+    <script src="./js/ajax.js"></script>
+  </body>
+</html>
+
+
