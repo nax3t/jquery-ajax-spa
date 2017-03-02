@@ -1,3 +1,6 @@
+# Coming from the original monolithic application?
+Click [here](refactor-instructions.md) to see refactor instructions
+
 # Setup Instructions
 
 ## Download
