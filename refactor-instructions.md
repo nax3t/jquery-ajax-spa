@@ -3,9 +3,9 @@
 ### **Important Note**: 
 Make a backup of your project _before_ following these instructions!
 
-##Folder restructure
+## Folder restructure
 
-####Instructions:
+#### Instructions:
 
 
 - Rename your project folder. From inside of `/ajax-jquery-tutorial` run the following:
@@ -138,9 +138,9 @@ Make a backup of your project _before_ following these instructions!
 
 -----
 
-##Enable CORS
+## Enable CORS
 
-####Instructions:
+#### Instructions:
 
 - Open /server/app.js and add the following code above your first route:
 
@@ -155,9 +155,9 @@ Make a backup of your project _before_ following these instructions!
 	```
 - This will allow us to make AJAX requests to our API (server) from our client, you can read all about CORS [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
 
-##Update client-side JS
+## Update client-side JS
 
-####Instructions:
+#### Instructions:
 
 - If you're using gulp & babel then open /client/src/ajax.js, otherwise just open /client/js/ajax.js
 - Wrap your code in a jQuery document ready function: `$(document).ready(function() { //your code here });`
@@ -200,9 +200,9 @@ Make a backup of your project _before_ following these instructions!
 - Now we have the url for our API (http://localhost:3000) appended to the request url for all 4 of our AJAX calls
 - We need to handle how our server deals with GET requests to '/todos' so let's down that now...
 
-##Update server-side JS
+## Update server-side JS
 
-####Instructions:
+#### Instructions:
 
 - Open up /server/app.js and update the app.get('/todos', ..) route with the following:
 
@@ -220,9 +220,9 @@ Make a backup of your project _before_ following these instructions!
 	
 -----
 
-##Running your applications
+## Running your applications
 
-####Instructions:
+#### Instructions:
 
 - Your apps should now be ready to run (I say apps, plural, because we now have a client side app and a server side app)
 

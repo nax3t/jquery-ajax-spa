@@ -21,16 +21,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get("/", function(req, res){
-  res.redirect("/todos");
-});
-
 app.get("/todos", function(req, res){
   Todo.find({}, function(err, todos){
     if(err){
       console.log(err);
     } else {
-      res.json(todos);
+        res.json(todos);
     }
   })
 });
