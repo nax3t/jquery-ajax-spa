@@ -18,8 +18,13 @@ $(document).ready(function () {
 		var toDoItem = $(this).serialize();
 
 		$.post('http://localhost:3000/todos', toDoItem, function (data) {
-			$('#todo-list').append('\n\t\t\t\t<li class="list-group-item">\n\t\t\t\t\t<form action="/todos/' + data._id + '" method="POST" class="edit-item-form">\n\t\t\t\t\t\t<div class="form-group">\n\t\t\t\t\t\t\t<label for="' + data._id + '">Item Text</label>\n\t\t\t\t\t\t\t<input type="text" value="' + data.text + '" name="todo[text]" class="form-control" id="' + data._id + '">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button class="btn btn-primary">Update Item</button>\n\t\t\t\t\t</form>\n\t\t\t\t\t<span class="lead">\n\t\t\t\t\t\t' + data.text + '\n\t\t\t\t\t</span>\n\t\t\t\t\t<div class="pull-right">\n\t\t\t\t\t\t<button class="btn btn-sm btn-warning edit-button">Edit</button>\n\t\t\t\t\t\t<form style="display: inline" method="POST" action="/todos/' + data._id + '" class="delete-item-form">\n\t\t\t\t\t\t\t<button type="submit" class="btn btn-sm btn-danger">Delete</button>\n\t\t\t\t\t\t</form>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="clearfix"></div>\n\t\t\t\t</li>\n\t\t\t\t');
-			$('#new-todo-form').find('.form-control').val('');
+			if (!data.error) {
+				$('#todo-list').append('\n\t\t\t\t\t<li class="list-group-item">\n\t\t\t\t\t\t<form action="/todos/' + data._id + '" method="POST" class="edit-item-form">\n\t\t\t\t\t\t\t<div class="form-group">\n\t\t\t\t\t\t\t\t<label for="' + data._id + '">Item Text</label>\n\t\t\t\t\t\t\t\t<input type="text" value="' + data.text + '" name="todo[text]" class="form-control" id="' + data._id + '">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<button class="btn btn-primary">Update Item</button>\n\t\t\t\t\t\t</form>\n\t\t\t\t\t\t<span class="lead">\n\t\t\t\t\t\t\t' + data.text + '\n\t\t\t\t\t\t</span>\n\t\t\t\t\t\t<div class="pull-right">\n\t\t\t\t\t\t\t<button class="btn btn-sm btn-warning edit-button">Edit</button>\n\t\t\t\t\t\t\t<form style="display: inline" method="POST" action="/todos/' + data._id + '" class="delete-item-form">\n\t\t\t\t\t\t\t\t<button type="submit" class="btn btn-sm btn-danger">Delete</button>\n\t\t\t\t\t\t\t</form>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class="clearfix"></div>\n\t\t\t\t\t</li>\n\t\t\t\t\t');
+				$('#new-todo-form').find('.form-control').val('');
+			} else {
+				$('#new-todo-form').prepend('\n\t\t\t\t\t\t<div class="alert alert-danger">\n\t\t\t\t\t\t  <strong>' + data.error + '</strong> \n\t\t\t\t\t\t</div>\n\t\t\t\t\t');
+				$('.alert-danger').delay(2000).fadeOut();
+			}
 		});
 	});
 

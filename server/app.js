@@ -32,15 +32,19 @@ app.get("/todos", function(req, res){
 });
 
 app.post("/todos", function(req, res){
- req.body.todo.text = req.sanitize(req.body.todo.text);
- var formData = req.body.todo;
- Todo.create(formData, function(err, newTodo){
-    if(err){
-      console.log(err);
-    } else {
-      res.json(newTodo);
-    }
-  });
+  if(req.body.todo.text) {
+    req.body.todo.text = req.sanitize(req.body.todo.text);
+    var formData = req.body.todo;
+    Todo.create(formData, function(err, newTodo){
+      if(err){
+        console.log(err);
+      } else {
+        res.json(newTodo);
+      }
+    });
+  } else {
+      res.json({error: "Invalid input!"});
+  }
 });
 
 app.put("/todos/:id", function(req, res){
